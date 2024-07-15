@@ -1,15 +1,114 @@
-/** 
- ___  __  __ __      __       __  __  ___  
-| _ )|  \/  |\ \    / /      |  \/  ||   \ 
-| _ \| |\/| | \ \/\/ /       | |\/| || |) |
-|___/|_|  |_|  \_/\_/        |_|  |_||___/ 
+{
+  "name": "suhail-md@1.3.9",
+  "description": "I am Suhail-Md Whatsapp Chuddy Buddy built in NodeJs to make experience better\n\t if Any Problem : www.youtube.com/SuhailTechInfo",
+  "logo": "https://github.com/SuhailTechInfo/Suhail-Md/blob/main/lib/assets/suhail.jpg?raw=true",
+  "keywords": ["whatsappbot", "suhailMd", "suhail Md bot", "Suhail-Md", "SuhailMdWhatsaooBot", "SuhailWaBot","SuhailMD","Suhail Md Whatsapp Bot","multi device"],
+  "success_url": "/suhail/",
+  "app_url": "/qr/",
+  "stack":"container",
+  "env": {
+    "OWNER_NAME": {
+      "description": "Name for Bot Owner",    
+      "value": "Suhail Ser",
+      "required" :true
+    },   
+     
+    "CAN_WELCOME": {
+      "description": "put 'false' or 'true' to enable & disable WELCOME ",
+      "value": "true",
+      "required" :false
+    },
+     
+    "CAN_GOODBYE": {
+      "description": "put 'false' or 'true' to enable & disable GOODBYE ",
+      "value": "false",
+      "required" :false
+    },
+    "BOT_NAME": {
+      "description": " NAME FOR BOT",
+      "required" :false,    
+      "value": "sᴜʜᴀɪʟ-ᴍᴅ"
+    }, 
+    "TZ": {
+      "description": "Put TIME_ZONE according to your location",
+      "required" :false,    
+      "value": "Asia/Karachi"
+    },  
+    "FLUSH": {
+      "description": " Make it 'true' if bot connected but not responed (After deployement!)",
+      "required" :false,    
+      "value": "false"
+    },
+    "WARN_COUNT": {
+      "description": " Warn count for users to kick/block when warn limit exceed!",
+      "required" :false,    
+      "value": "3"
+    },
+    "HEROKU_API_KEY": {
+      "description": "Put Your Heroku Api Key Here",
+      "value": "",
+      "required" :true 
+    },   
+    "HEROKU_APP_NAME": {
+      "description": "Put Your Heroku App Name Here",
+      "value": "",
+    "required" :true
+    }, 
+    "MSGS_IN_LOG": {
+      "description": "Fill the value -true- if you want to see Messages in logs.",
+      "required" :false,
+      "value": "false"
+    },
+    "PREFIX": {
+      "description": "Enter your desired prefix for bot. you can set `all | . | .!*`",
+      "value": "."
+    },
+    "OWNER_NUMBER": {
+      "description": "The phone numbers of the users who you want to be admin for the bot (should be in international format without + and multiple numbers must be separated by a comma \",\")",
+      "value": "923184474176"
+    },
+    "SESSION_ID": {
+      "description": "put your SESSION_ID here.",
+      "value": "Suhail;;;eyJub2lzZUtleSI6eyJwcml2YXRlIjp7InR5cGUiOiJCdWZmZXIiLCJkYXRhIjoiYUQ2aVZWK2htMHdCMnlIaHNxd3RsOHdGQXR5NE1XaUt1aTZ5NU80WjFYND0ifSwicHVibGljIjp7InR5cGUiOiJCdWZmZXIiLCJkYXRhIjoicHJWY1dSaXNkTzdtcFpQT2pqUC9WTnNMcm54NHQ3MSsrUTBtZDZSOGVDbz0ifX0sInBhaXJpbmdFcGhlbWVyYWxLZXlQYWlyIjp7InByaXZhdGUiOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOiJVSmNTbXI0bERmQ1Y5V3cveUJMQXVhekVldmRDTWMrL2NsRlczcXRQNG1zPSJ9LCJwdWJsaWMiOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOiJ3YVlNSm4xdmtwR2FrempzanBYZDgzUlR5Ymdzem5QK2NqQjQvaTJzeWtFPSJ9fSwic2lnbmVkSWRlbnRpdHlLZXkiOnsicHJpdmF0ZSI6eyJ0eXBlIjoiQnVmZmVyIiwiZGF0YSI6InVKRG1LQ2YvMUJZbW9UWDg4NHBCelBXWHNOUFlXY0YwRkppZTVTdVY2R1k9In0sInB1YmxpYyI6eyJ0eXBlIjoiQnVmZmVyIiwiZGF0YSI6ImxzYUE5S2krQWpuTWVWZ3JpQWF2VXNtTkNqZ0FOTWVvWFFrZG1jaDBpejA9In19LCJzaWduZWRQcmVLZXkiOnsia2V5UGFpciI6eyJwcml2YXRlIjp7InR5cGUiOiJCdWZmZXIiLCJkYXRhIjoiOEVFZCt0Ri9iUXBtZ2FFZFlGTC8yODE2N3JuckpUb3NrTWNnanJmbE1FOD0ifSwicHVibGljIjp7InR5cGUiOiJCdWZmZXIiLCJkYXRhIjoiWDZseWUwbzQydmZLdGlxcnIydDhRdmdEa21TNTNMc3FIOS9BMDFuazBoRT0ifX0sInNpZ25hdHVyZSI6eyJ0eXBlIjoiQnVmZmVyIiwiZGF0YSI6Ing1ZURXSXc1SWZxeWxQSjFvRldWbHZqd09WSWpNbW1ZSmtHWHNQd2lKTVc5bkdJdmxmcThpc2tJSWExU1pJWVJJSlF4TS9CeUdNU2dwSXpGazNOeWdRPT0ifSwia2V5SWQiOjF9LCJyZWdpc3RyYXRpb25JZCI6NjgsImFkdlNlY3JldEtleSI6IjZZYU55YmFZN21odDVra0pWbER2WDdBdG5GeDR3MVF4TXlnUHpNYUN3Qnc9IiwicHJvY2Vzc2VkSGlzdG9yeU1lc3NhZ2VzIjpbeyJrZXkiOnsicmVtb3RlSmlkIjoiMjU0MTEzNDE5NDc5QHMud2hhdHNhcHAubmV0IiwiZnJvbU1lIjp0cnVlLCJpZCI6IkJERjQ0OTNCNkVFQzgzOTU2Qjg5Qjg0NjdENTcwNjAxIn0sIm1lc3NhZ2VUaW1lc3RhbXAiOjE3MjEwMzk0NzJ9XSwibmV4dFByZUtleUlkIjozMSwiZmlyc3RVbnVwbG9hZGVkUHJlS2V5SWQiOjMxLCJhY2NvdW50U3luY0NvdW50ZXIiOjAsImFjY291bnRTZXR0aW5ncyI6eyJ1bmFyY2hpdmVDaGF0cyI6ZmFsc2V9LCJkZXZpY2VJZCI6ImZuellfd3RnVEVtN2Z3dExkbFRDWGciLCJwaG9uZUlkIjoiYjAxZjViYjMtNjFiYS00YmQ3LTk1ZjAtZmQ4NmI2YjU0ZWZmIiwiaWRlbnRpdHlJZCI6eyJ0eXBlIjoiQnVmZmVyIiwiZGF0YSI6IkY3TzY3aXVGV2VRb25pU3B5QWlNZ0FaMWJ0Yz0ifSwicmVnaXN0ZXJlZCI6dHJ1ZSwiYmFja3VwVG9rZW4iOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOiJxa3RDZEtoZmw2a1B0RkJJdnhJVEdjNXdNTlU9In0sInJlZ2lzdHJhdGlvbiI6e30sInBhaXJpbmdDb2RlIjoiRFpXRzRDVlEiLCJtZSI6eyJpZCI6IjI1NDExMzQxOTQ3OToyNEBzLndoYXRzYXBwLm5ldCIsIm5hbWUiOiJOaWNrbWVybGluIE1hbm9zIiwibGlkIjoiMTMxNTU1MjM0MTgxMTI5OjI0QGxpZCJ9LCJhY2NvdW50Ijp7ImRldGFpbHMiOiJDS200Nzk4R0VPVDAwN1FHR0FjZ0FDZ0EiLCJhY2NvdW50U2lnbmF0dXJlS2V5IjoidzdwVVpXYVFOSi8wSTVmTFZmblZNSzhnTTMrcVlpR2g3UU0yRE9MUmsyYz0iLCJhY2NvdW50U2lnbmF0dXJlIjoiZmd3RnJDdndZcXVGdlEreTE3ZkxmWGhsS0hKOERQU3lTbjRPaVdpZXJ2OWErY3NTOERrNENmMjhNS1NFT2FaeHZNU0xndVdpWWp6NlFEemc3bnE5QVE9PSIsImRldmljZVNpZ25hdHVyZSI6InJ1UlZqLy93SmxMRFZCS2lOOWVEQkV4SWFNY2RadFFNdkpnK1pGbE5aSzcvSld3dE1EMTl4UEJMWFFLbDJCU1M2NzBXNUUrMlpIWTh3VUptUzdjMWp3PT0ifSwic2lnbmFsSWRlbnRpdGllcyI6W3siaWRlbnRpZmllciI6eyJuYW1lIjoiMjU0MTEzNDE5NDc5OjI0QHMud2hhdHNhcHAubmV0IiwiZGV2aWNlSWQiOjB9LCJpZGVudGlmaWVyS2V5Ijp7InR5cGUiOiJCdWZmZXIiLCJkYXRhIjoiQmNPNlZHVm1rRFNmOUNPWHkxWDUxVEN2SUROL3FtSWhvZTBETmd6aTBaTm4ifX1dLCJwbGF0Zm9ybSI6InNtYmEiLCJsYXN0QWNjb3VudFN5bmNUaW1lc3RhbXAiOjE3MjEwMzk0NjUsIm15QXBwU3RhdGVLZXlJZCI6IkFBQUFBSWQzIn0="
+  
+    },
+    "OPENAI_API_KEY": {
+      "description": "put your OPENAI api key here.Get it from beta.openai.com ",
+      "value": "",
+      "required" :false
+    }, 
+    "ELEVENLAB_API_KEY": {
+      "description": "Put your ElevenLab api key here for Aitts. Watch tutorial from https://youtu.be/HCDcdPtkwg4 ",
+      "value": "",
+      "required" :false
+    }, 
+    "REMOVE_BG_KEY": {
+      "description": "put your REMOVE BG KEY here.Get it from removeBg.com ",
+      "value": "",
+      "required" :false
+    },
+    "MODE": {
+      "description": "Worktype of your bot. Use public/private, if private then only bot number can use it. If public then everyone can use it.",
+      "value": "public"
+    },
+    "PACK_NAME": {
+      "description": "Put Sticker Pack_Name.",
+      "value": "Suhail Md",
+      "required": false 
+    },
+    "PACK_AUTHER": {
+      "description": "Put Sticker Author_Name.",
+      "value": "",
+      "required": false 
+    }
+  }, 
+  "addons": [{ "plan": "heroku-postgresql:essential-1" }],
+  "buildpacks": [
+    { "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" },
+    { "url": "https://github.com/carlosdommor/heroku-buildpack-ffmpeg-latest" }
+  ]
+}
 
- Made by Ibrahim Adams
-
-
- Nothing here 
-
- Blank space
 
 
 
